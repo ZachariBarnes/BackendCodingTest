@@ -1,0 +1,4 @@
+{
+  "ignore": ["/node_modules","node_modules","./node_modules","./babel.config.js","./package.json","./npm-debug.log","./ChodingTest.code-workspace"],
+  "presets": ["@babel/preset-env"]
+}

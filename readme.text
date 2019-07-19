@@ -1,0 +1,65 @@
+This Node.js express app sets up a local Express Server.
+To Get started you will need to have Node.js installed 
+  Please note this was developed on a Windows machine so there may be some minor changes required for MAC or Linux
+  1.Extract the contents of CodingTest.zip then
+     Open the CodingTest folder in a command prompt or terminal (or an IDE with integrated terminal)
+  2.In the terminal run: `npm install`
+        This might take a few minutes to complete.
+  3.When that completes, in the terminal run the command: `npm test`
+        This will display tests that pass and coverage percentages.
+  4.In the terminal run: `npm start`
+        This command will start the express app.
+  5.Once the app starts you can choose to either use your browser to proceed or use a HTTP client like Postman or Insomnia
+        (I tested with Postman and Google Chrome)
+        BROWSER
+            5a. Navigate to http://localhost:3003/ to see the list of valid endpoints.
+            5b. Navigate to http://localhost:3003/pangrams to use the getMissingLetters function or get further instructions
+                this endpoint accepts a query parameter of 'sentence' Ex http://localhost:3003/pangrams?sentence=Thelazydogjustslept
+            5c. Navigate to http://localhost:3003/animate to use the animate function or get further instructions
+                this endpoint accepts a query parameter of 'speed' and 'init' Ex http://localhost:3003/animate?speed=2&init=LRR....R.
+        HTTP CLIENT(Postman)
+            5a. Create a new POST Request set the Content-Type to 'application/json'
+            5b. Set the URL to either http://localhost:3003/Pangrams or http://localhost:3003/Animate
+            5c. In the Body add your parameters ("sentence" for /pangrams || "speed", "init" for /animate)
+                  if you are using RAW instead of x-www-form-urlencoded make sure you format your body as a JSON object
+                   and select JSON(application/JSON) in the dropdown (the default is text)
+            5d. Example bodies:
+                  /Animate endpoint
+                    {
+                    "speed" : 2,
+                    "init": "...L..R.."
+                    }
+                  /Pangrams endpoint
+                    { "sentence" : "The quick brown fox jumped over the lazy dog" }
+
+
+This acts as an API with multiple endpoints. Endpoints are as follows:
+http://localhost:3003/
+http://localhost:3003/directory
+http://localhost:3003/pangrams
+http://localhost:3003/animate
+
+The enpoints for Pargrams and Animate accept POST requests with application/json bodies
+=====/Pangrams POST Request Example====
+Content-Type: application/json
+body: { "sentence" : "The quick brown fox jumped over the lazy dog" }
+
+=====/Animate POST Request Example====
+Content-Type: application/json
+body: {
+  "speed" : 2,
+  "init": "...L..R.."
+  }
+
+The enpoints for Pargrams and Animate also accept get requests with query parameters
+
+=====/Pangrams GET Request Examples====
+http://localhost:3003/pangrams?sentence=The lazy dog just slept
+
+OR use URL encoded (not needed Your browser will interpret the spaces)
+
+http://localhost:3003/pangrams?sentence=The%20lazy%20dog%20just%20slept
+
+=====/Animate GET Request Example====
+
+http://localhost:3003/animate?speed=2&init=LRR....R.
